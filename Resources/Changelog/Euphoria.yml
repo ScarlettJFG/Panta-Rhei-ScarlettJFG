@@ -722,3 +722,13 @@ Entries:
         of no belt.
   id: 89
   time: '2026-02-27T07:37:44.0000000+00:00'
+- author: Dunrab
+  changes:
+    - type: Add
+      message: >-
+        Added the Euphoria splashlogo (made by cheesedinks), welcome to
+        Euphoria?
+    - type: Remove
+      message: The Panta-Rei splash screen logo.
+  id: 90
+  time: '2026-02-27T23:52:06.0000000+00:00'
