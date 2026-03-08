@@ -22,7 +22,7 @@
       path: /Audio/Voice/Slime/slime_squish.ogg
     storageRemoveSound: # Euphoria: add removal sound
       path: /Audio/Voice/Slime/slime_squish.ogg
-    blacklist: # DeltaV - add blacklist # Euphoria note: Doesn't seem to work
+    blacklist: # DeltaV - add blacklist
       components:
       - NukeDisk
   - type: StorageBlockedByClothing # Euphoria: Adding the component and tags
