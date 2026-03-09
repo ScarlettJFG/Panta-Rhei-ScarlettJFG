@@ -37,11 +37,7 @@
     - FootstepSound
     - DoorBumpOpener
     - SlimeEmotes
-  - type: Speech # There appears to have not been emotes, force adding them.
-    speechVerb: Slime
-    speechSounds: Slime
-    allowedEmotes: ['Squish', 'Bubble', 'Pop']
-  - type: Vocal # This is 100% more of a bandaid fix until I learn more about how sounds work, but now Geras emotes will have sound.
+  - type: Vocal # Floof. This is 100% more of a bandaid fix until I learn more about how sounds work, but now Geras emotes will have sound.
     sounds:
         Male: MaleSlime
         Female: FemaleSlime
