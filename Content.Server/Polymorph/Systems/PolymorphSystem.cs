@@ -36,7 +36,7 @@ public sealed partial class PolymorphSystem : EntitySystem
     [Dependency] private readonly IComponentFactory _compFact = default!; // Floofstation
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly ISerializationManager _serialization = default!;
+    [Dependency] private readonly ISerializationManager _serialization = default!; // Floofstation
     [Dependency] private readonly ActionsSystem _actions = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly SharedBuckleSystem _buckle = default!;
