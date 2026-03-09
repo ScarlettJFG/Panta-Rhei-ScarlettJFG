@@ -1,3 +1,14 @@
+# Used as a parent for all other role loadouts. Includes things that all jobs should have access to.
+- type: roleLoadout
+  id: JobBaseLoadout
+  abstract: true
+  groups:
+  - Trinkets
+  - Smokeables
+  - Pets
+  - Instruments
+  - SexToys # Floofstation
+
 - type: roleLoadout
   id: JobSeniorEngineer
   parent: JobBaseLoadout # Euphoria
