@@ -1703,7 +1703,7 @@
 
 - type: loadoutGroup
   id: DetectiveOuterClothing
-  parent: [FloofOuterClothing] # Floofstation
+  parent: [FloofDetectiveOuterClothing, FloofOuterClothing] # Floofstation
   name: loadout-group-detective-outerclothing
   loadouts:
   - DetectiveArmorVest

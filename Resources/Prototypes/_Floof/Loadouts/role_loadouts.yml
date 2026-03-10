@@ -112,3 +112,24 @@
   - Smokeables
   - CargoTechnicianJobTrinkets
   - GroupSpeciesBreathTool
+
+- type: roleLoadout
+  id: JobSecurityTechnician
+  groups:
+  - SecurityHead
+  - SecurityNeck
+  - SecurityJumpsuit
+  - SecurityBackpack
+  - SecurityOuterClothingDeltaV
+  - StationEngineerGloves
+  - SecurityShoes
+  - SecurityPDA
+  - StationEngineerBelts
+  - RoboticistGlasses
+  - SurvivalSecurity
+  - Trinkets
+  - Smokeables
+  - SecurityJobTrinkets
+  - GroupSpeciesBreathToolSecurity
+  - SecurityFirearm
+  - SecurityFirearmAmmo
