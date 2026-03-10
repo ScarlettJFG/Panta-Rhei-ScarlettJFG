@@ -1245,3 +1245,29 @@ Entries:
       message: All borgs should be able to crawl now.
   id: 152
   time: '2026-03-08T02:37:17.0000000+00:00'
+- author: ScarlettJFG
+  changes:
+    - type: Fix
+      message: Slimefolk now have an anti-theft system called wearing clothes
+    - type: Add
+      message: Removal sound for taking things out of Slimefolk internal storage.
+  id: 153
+  time: '2026-03-09T09:40:45.0000000+00:00'
+- author: sprkl
+  changes:
+    - type: Add
+      message: Security Technician and associated gear.
+  id: 154
+  time: '2026-03-09T11:55:43.0000000+00:00'
+- author: Dunrab
+  changes:
+    - type: Add
+      message: Lo's Digiboard can be linked to cargo telepads again.
+  id: 155
+  time: '2026-03-10T08:10:56.0000000+00:00'
+- author: JFerrix
+  changes:
+    - type: Tweak
+      message: Added more marking points to shadowkin
+  id: 156
+  time: '2026-03-10T14:12:44.0000000+00:00'
