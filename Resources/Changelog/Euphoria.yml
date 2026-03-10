@@ -1265,3 +1265,9 @@ Entries:
       message: Lo's Digiboard can be linked to cargo telepads again.
   id: 155
   time: '2026-03-10T08:10:56.0000000+00:00'
+- author: JFerrix
+  changes:
+    - type: Tweak
+      message: Added more marking points to shadowkin
+  id: 156
+  time: '2026-03-10T14:12:44.0000000+00:00'
