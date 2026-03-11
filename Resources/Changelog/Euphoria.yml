@@ -1343,3 +1343,11 @@ Entries:
       message: Added round start psionics traits
   id: 163
   time: '2026-03-11T08:16:02.0000000+00:00'
+- author: Mnemotechnician
+  changes:
+    - type: Fix
+      message: >-
+        Hopefully fixed the bug that would stop footprints and puddles with less
+        than 0.1u of reagents inside from evaporating.
+  id: 164
+  time: '2026-03-11T12:41:49.0000000+00:00'
