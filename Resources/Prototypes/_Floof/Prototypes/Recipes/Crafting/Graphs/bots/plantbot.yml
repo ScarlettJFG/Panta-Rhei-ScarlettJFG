@@ -10,12 +10,12 @@
         icon:
           sprite: Objects/Tools/bucket.rsi
           state: icon
-        name: bucket
+        name: construction-graph-tag-bucket
       - tag: ProximitySensor
         icon:
           sprite: Objects/Misc/proximity_sensor.rsi
           state: icon
-        name: proximity sensor
+        name: construction-graph-tag-proximity-sensor
         doAfter: 2
       - tag: BorgArm
         icon:
@@ -26,7 +26,7 @@
         icon:
           sprite: Objects/Tools/Hydroponics/clippers.rsi
           state: icon
-        name: plant clippers
+        name: construction-graph-tag-plantclippers
         doAfter: 2
   - node: bot
     entity: MobPlantbot
