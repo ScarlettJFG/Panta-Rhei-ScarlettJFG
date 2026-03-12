@@ -21,7 +21,7 @@
         icon:
           sprite: Mobs/Silicon/drone.rsi
           state: l_hand
-        name: borg arm
+        name: construction-graph-tag-borg-arm
       - tag: PlantSampleTaker
         icon:
           sprite: Objects/Tools/Hydroponics/clippers.rsi
