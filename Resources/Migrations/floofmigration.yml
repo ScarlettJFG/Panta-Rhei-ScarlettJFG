@@ -20,9 +20,6 @@ PlushieTrystan: PlushieMothRandom
 
 #Need to port over still
 SpawnMobArcticFoxSeb: MobArcticFoxSiobhan # do we want to bring seb over?
-CardBoxSyndicate: null
-CardBoxBlack: null
-CardBoxNanotrasen: null
 HandheldFax: null #this seems to be mapped to train in error need to remove this, but setting this to null till its removed
 AirlockNanotrasenRepresentativeCommandGlassLocked: AirlockCommandGlassLocked
 AirlockMagistrateCommandLocked: AirlockChiefJusticeLocked #delta-v dose no thave amgistrate so replacing with a cj airlock
@@ -86,6 +83,7 @@ CrateLewdKink: null
 LewdLootSpawnerAll: null
 LewdLootSpawnerKinky: null
 LewdLootSpawnerToys: null
+StripperPole: null
 ClothingHandsSexCompGlovesBlue: null
 ClothingHandsSexCompGlovesRed: null
 ClothingHeadSexCompCirclet: null
