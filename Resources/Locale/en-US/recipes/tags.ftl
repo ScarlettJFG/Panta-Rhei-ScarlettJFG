@@ -152,6 +152,3 @@ construction-graph-tag-spationaut-hardsuit = spationaut hardsuit
 
 # clothing
 construction-graph-tag-backpack = backpack
-
-# floof additions
-construction-graph-tag-plantclippers = plant clippers
