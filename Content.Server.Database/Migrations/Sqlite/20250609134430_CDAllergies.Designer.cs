@@ -3,6 +3,7 @@ using System;
 using Content.Server.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Content.Server.Database.Migrations.Sqlite
 {
     [DbContext(typeof(SqliteServerDbContext))]
-    partial class SqliteServerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250609134430_CDAllergies")]
+    partial class CDAllergies
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.1");
@@ -90,10 +93,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Property<int>("Id")
                         .HasColumnType("INTEGER")
                         .HasColumnName("admin_log_id");
-
-                    b.Property<long>("CurTime")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("cur_time");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT")
@@ -560,6 +559,10 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("jsonb")
                         .HasColumnName("character_records");
 
+                    b.Property<string>("CustomSpeciesName")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("custom_species_name");
+
                     b.Property<float>("Height")
                         .HasColumnType("REAL")
                         .HasColumnName("height");
@@ -577,29 +580,28 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.ToTable("cdprofile", (string)null);
                 });
 
-            // CD Allergies
             modelBuilder.Entity("Content.Server.Database.CDModel+CharacterAllergy", b =>
-            {
-                b.Property<int>("CDProfileId")
-                    .HasColumnType("INTEGER")
-                    .HasColumnName("cdprofile_id");
+                {
+                    b.Property<int>("CDProfileId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("cdprofile_id");
 
-                b.Property<string>("Allergen")
-                    .HasColumnType("TEXT")
-                    .HasColumnName("allergen");
+                    b.Property<string>("Allergen")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("allergen");
 
-                b.Property<int>("Intensity")
-                    .HasColumnType("INTEGER")
-                    .HasColumnName("intensity");
+                    b.Property<int>("Intensity")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("intensity");
 
-                b.HasKey("CDProfileId", "Allergen")
-                    .HasName("PK_cd_character_allergies");
+                    b.HasKey("CDProfileId", "Allergen")
+                        .HasName("PK_cd_character_allergies");
 
-                b.HasIndex("CDProfileId", "Allergen")
-                    .HasDatabaseName("IX_cd_character_allergies_cdprofile_id_allergen");
+                    b.HasIndex("CDProfileId", "Allergen")
+                        .HasDatabaseName("IX_cd_character_allergies_cdprofile_id_allergen");
 
-                b.ToTable("cd_character_allergies", (string)null);
-            });
+                    b.ToTable("cd_character_allergies", (string)null);
+                });
 
             modelBuilder.Entity("Content.Server.Database.CDModel+CharacterRecordEntry", b =>
                 {
@@ -693,135 +695,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.HasIndex("UserId");
 
                     b.ToTable("connection_log", (string)null);
-                });
-
-            modelBuilder.Entity("Content.Server.Database.ConsentFreetextReadReceipt", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("consent_freetext_read_receipt_id");
-
-                    b.Property<DateTime>("ReadAt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("read_at");
-
-                    b.Property<int>("ReadConsentSettingsId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("read_consent_settings_id");
-
-                    b.Property<Guid>("ReaderUserId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("reader_user_id");
-
-                    b.HasKey("Id")
-                        .HasName("PK_consent_freetext_read_receipt");
-
-                    b.HasIndex("ReadConsentSettingsId")
-                        .HasDatabaseName("IX_consent_freetext_read_receipt_read_consent_settings_id");
-
-                    b.HasIndex("ReaderUserId", "ReadConsentSettingsId")
-                        .IsUnique();
-
-                    b.ToTable("consent_freetext_read_receipt", (string)null);
-                });
-
-            modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("consent_settings_id");
-
-                    b.Property<string>("ConsentFreetext")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("consent_freetext");
-
-                    b.Property<DateTime>("ConsentFreetextUpdatedAt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("consent_freetext_updated_at");
-
-                    b.Property<int?>("ProfileId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("profile_id");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("user_id");
-
-                    b.HasKey("Id")
-                        .HasName("PK_consent_settings");
-
-                    b.HasIndex("ProfileId")
-                        .IsUnique()
-                        .HasDatabaseName("IX_consent_settings_profile_id");
-
-                    b.HasIndex("UserId", "ProfileId")
-                        .IsUnique();
-
-                    b.ToTable("consent_settings", (string)null);
-                });
-
-            modelBuilder.Entity("Content.Server.Database.ConsentToggle", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("consent_toggle_id");
-
-                    b.Property<int>("ConsentSettingsId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("consent_settings_id");
-
-                    b.Property<string>("ToggleProtoId")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("toggle_proto_id");
-
-                    b.Property<string>("ToggleProtoState")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("toggle_proto_state");
-
-                    b.HasKey("Id")
-                        .HasName("PK_consent_toggle");
-
-                    b.HasIndex("ConsentSettingsId", "ToggleProtoId")
-                        .IsUnique();
-
-                    b.ToTable("consent_toggle", (string)null);
-                });
-
-            modelBuilder.Entity("Content.Server.Database.DVModel+SeenTip", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("dv_seen_tips_id");
-
-                    b.Property<DateTime>("DismissedAt")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("dismissed_at");
-
-                    b.Property<Guid>("PlayerUserId")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("player_user_id");
-
-                    b.Property<string>("TipProtoId")
-                        .IsRequired()
-                        .HasMaxLength(64)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("tip_proto_id");
-
-                    b.HasKey("Id")
-                        .HasName("PK_dv_seen_tips");
-
-                    b.HasIndex("PlayerUserId", "TipProtoId")
-                        .IsUnique()
-                        .HasDatabaseName("IX_dv_seen_tips_player_user_id_tip_proto_id");
-
-                    b.ToTable("dv_seen_tips", (string)null);
                 });
 
             modelBuilder.Entity("Content.Server.Database.IPIntelCache", b =>
@@ -976,11 +849,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("admin_ooc_color");
 
-                    b.PrimitiveCollection<string>("ConstructionFavorites")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("construction_favorites");
-
                     b.Property<int>("SelectedCharacterSlot")
                         .HasColumnType("INTEGER")
                         .HasColumnName("selected_character_slot");
@@ -1013,11 +881,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("char_name");
-
-                    b.Property<string>("CustomSpecieName")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("custom_specie_name");
 
                     b.Property<string>("EyeColor")
                         .IsRequired()
@@ -1827,19 +1690,17 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Profile");
                 });
 
-            // CD Allergies
             modelBuilder.Entity("Content.Server.Database.CDModel+CharacterAllergy", b =>
-            {
-                b.HasOne("Content.Server.Database.CDModel+CDProfile", "CDProfile")
-                    .WithMany("CharacterAllergies")
-                    .HasForeignKey("CDProfileId")
-                    .OnDelete(DeleteBehavior.Cascade)
-                    .IsRequired()
-                    .HasConstraintName("FK_cd_character_allergies_cdprofile_cdprofile_id");
+                {
+                    b.HasOne("Content.Server.Database.CDModel+CDProfile", "CDProfile")
+                        .WithMany("CharacterAllergies")
+                        .HasForeignKey("CDProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_cd_character_allergies_cdprofile_cdprofile_id");
 
-                b.Navigation("CDProfile");
-            });
-
+                    b.Navigation("CDProfile");
+                });
 
             modelBuilder.Entity("Content.Server.Database.CDModel+CharacterRecordEntry", b =>
                 {
@@ -1891,51 +1752,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("HWId");
 
                     b.Navigation("Server");
-                });
-
-            modelBuilder.Entity("Content.Server.Database.ConsentFreetextReadReceipt", b =>
-                {
-                    b.HasOne("Content.Server.Database.ConsentSettings", "ReadConsentSettings")
-                        .WithMany("ReadReceipts")
-                        .HasForeignKey("ReadConsentSettingsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_consent_freetext_read_receipt_consent_settings_read_consent_settings_id");
-
-                    b.Navigation("ReadConsentSettings");
-                });
-
-            modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
-                {
-                    b.HasOne("Content.Server.Database.Profile", "Profile")
-                        .WithOne("ConsentSettings")
-                        .HasForeignKey("Content.Server.Database.ConsentSettings", "ProfileId")
-                        .HasConstraintName("FK_consent_settings_profile_profile_id");
-
-                    b.Navigation("Profile");
-                });
-
-            modelBuilder.Entity("Content.Server.Database.ConsentToggle", b =>
-                {
-                    b.HasOne("Content.Server.Database.ConsentSettings", "ConsentSettings")
-                        .WithMany("ConsentToggles")
-                        .HasForeignKey("ConsentSettingsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_consent_toggle_consent_settings_consent_settings_id");
-
-                    b.Navigation("ConsentSettings");
-                });
-
-            modelBuilder.Entity("Content.Server.Database.DVModel+SeenTip", b =>
-                {
-                    b.HasOne("Content.Server.Database.Player", null)
-                        .WithMany()
-                        .HasForeignKey("PlayerUserId")
-                        .HasPrincipalKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_dv_seen_tips_player_player_id");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Job", b =>
@@ -2258,21 +2074,15 @@ namespace Content.Server.Database.Migrations.Sqlite
                 });
 
             modelBuilder.Entity("Content.Server.Database.CDModel+CDProfile", b =>
-            {
-                    b.Navigation("CharacterAllergies"); // CD Allergies
+                {
+                    b.Navigation("CharacterAllergies");
+
                     b.Navigation("CharacterRecordEntries");
                 });
 
             modelBuilder.Entity("Content.Server.Database.ConnectionLog", b =>
                 {
                     b.Navigation("BanHits");
-                });
-
-            modelBuilder.Entity("Content.Server.Database.ConsentSettings", b =>
-                {
-                    b.Navigation("ConsentToggles");
-
-                    b.Navigation("ReadReceipts");
                 });
 
             modelBuilder.Entity("Content.Server.Database.Player", b =>
@@ -2324,8 +2134,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                     b.Navigation("Antags");
 
                     b.Navigation("CDProfile");
-
-                    b.Navigation("ConsentSettings");
 
                     b.Navigation("Jobs");
 
