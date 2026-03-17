@@ -1367,3 +1367,9 @@ Entries:
         you to select them in those roles.
   id: 166
   time: '2026-03-08T04:28:21.0000000+00:00'
+- author: SyaoranFox
+  changes:
+    - type: Tweak
+      message: Hunger should decay much slower than previously.
+  id: 167
+  time: '2026-03-16T07:24:31.0000000+00:00'
