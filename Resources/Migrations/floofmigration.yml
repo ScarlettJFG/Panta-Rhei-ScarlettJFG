@@ -26,7 +26,6 @@ AirlockMagistrateCommandLocked: AirlockChiefJusticeLocked #delta-v dose no thave
 AirlockBlueshieldOfficerCommandLocked: AirlockCommandGlassLocked #delta-v dosent have bso so replacing with locked command airlock
 MaterialReclaimer: null
 SheetPGlass10: SheetPGlass1 # for some reaosn they removed stacks of ten for this material so we need to remake it
-Shower: null
 SignIceCream: null # i believe this was added during an arena update PR will have to pull this out of that
 SolidReinforcedSecretDoor: null # removed the Reinforced variant of this door, we will have to bring this over
 GeigerCounterWallMount: null
