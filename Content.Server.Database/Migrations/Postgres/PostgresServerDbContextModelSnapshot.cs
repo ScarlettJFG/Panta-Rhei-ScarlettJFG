@@ -611,29 +611,28 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.ToTable("cdprofile", (string)null);
                 });
 
-            // CD Allergies
             modelBuilder.Entity("Content.Server.Database.CDModel+CharacterAllergy", b =>
-            {
-                b.Property<int>("CDProfileId")
-                    .HasColumnType("integer")
-                    .HasColumnName("cdprofile_id");
+                {
+                    b.Property<int>("CDProfileId")
+                        .HasColumnType("integer")
+                        .HasColumnName("cdprofile_id");
 
-                b.Property<string>("Allergen")
-                    .HasColumnType("text")
-                    .HasColumnName("allergen");
+                    b.Property<string>("Allergen")
+                        .HasColumnType("text")
+                        .HasColumnName("allergen");
 
-                b.Property<int>("Intensity")
-                    .HasColumnType("integer")
-                    .HasColumnName("intensity");
+                    b.Property<int>("Intensity")
+                        .HasColumnType("integer")
+                        .HasColumnName("intensity");
 
-                b.HasKey("CDProfileId", "Allergen")
-                    .HasName("PK_cd_character_allergies");
+                    b.HasKey("CDProfileId", "Allergen")
+                        .HasName("PK_cd_character_allergies");
 
-                b.HasIndex("CDProfileId", "Allergen")
-                    .HasDatabaseName("IX_cd_character_allergies_cdprofile_id_allergen");
+                    b.HasIndex("CDProfileId", "Allergen")
+                        .HasDatabaseName("IX_cd_character_allergies_cdprofile_id_allergen");
 
-                b.ToTable("cd_character_allergies", (string)null);
-            });
+                    b.ToTable("cd_character_allergies", (string)null);
+                });
 
             modelBuilder.Entity("Content.Server.Database.CDModel+CharacterRecordEntry", b =>
                 {
@@ -1915,18 +1914,17 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Profile");
                 });
 
-            // CD Allergies
             modelBuilder.Entity("Content.Server.Database.CDModel+CharacterAllergy", b =>
-            {
-                b.HasOne("Content.Server.Database.CDModel+CDProfile", "CDProfile")
-                    .WithMany("CharacterAllergies")
-                    .HasForeignKey("CDProfileId")
-                    .OnDelete(DeleteBehavior.Cascade)
-                    .IsRequired()
-                    .HasConstraintName("FK_cd_character_allergies_cdprofile_cdprofile_id");
+                {
+                    b.HasOne("Content.Server.Database.CDModel+CDProfile", "CDProfile")
+                        .WithMany("CharacterAllergies")
+                        .HasForeignKey("CDProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_cd_character_allergies_cdprofile_cdprofile_id");
 
-                b.Navigation("CDProfile");
-            });
+                    b.Navigation("CDProfile");
+                });
 
             modelBuilder.Entity("Content.Server.Database.CDModel+CharacterRecordEntry", b =>
                 {
@@ -2345,8 +2343,9 @@ namespace Content.Server.Database.Migrations.Postgres
                 });
 
             modelBuilder.Entity("Content.Server.Database.CDModel+CDProfile", b =>
-            {
-                    b.Navigation("CharacterAllergies"); // CD Allergies
+                {
+                    b.Navigation("CharacterAllergies");
+
                     b.Navigation("CharacterRecordEntries");
                 });
 
