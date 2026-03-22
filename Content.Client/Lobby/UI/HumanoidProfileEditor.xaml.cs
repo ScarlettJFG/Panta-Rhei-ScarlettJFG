@@ -4,6 +4,7 @@ using System.Numerics;
 using Content.Client.Humanoid;
 using Content.Client.Lobby.UI.Loadouts;
 using Content.Client.Lobby.UI.Roles;
+using Content.Client._Floof.Humanoid; // Allergies
 using Content.Client.Message;
 using Content.Client.Players.PlayTimeTracking;
 using Content.Client.Stylesheets;
@@ -40,6 +41,9 @@ using Content.Client._CD.Records.UI;
 using Content.Shared._CD.Records;
 // End CD - Character Records
 using Content.Shared._DV.Traits; // DV - Traits
+using Content.Shared.Chemistry.Reaction; // Allergies
+using Content.Shared.Chemistry.Reagent; // Allergies
+using Content.Shared.FixedPoint; // Allergies
 
 namespace Content.Client.Lobby.UI
 {
@@ -117,6 +121,10 @@ namespace Content.Client.Lobby.UI
 
         private readonly RecordEditorGui _recordsTab;
         // End CD - Station Records
+
+        // Floof: Allergies Editor
+        private readonly AllergyPicker _allergiesTab;
+
 
         [ValidatePrototypeId<GuideEntryPrototype>]
         private static readonly ProtoId<GuideEntryPrototype> DefaultSpeciesGuidebook = "Species";
@@ -490,6 +498,13 @@ namespace Content.Client.Lobby.UI
 
             // Begin CD - Character Records
             #region CosmaticRecords
+
+            // Begin CD - Allergies
+            _allergiesTab = new AllergyPicker(UpdateAllergies);
+            TabContainer.AddChild(_allergiesTab);
+            TabContainer.SetTabTitle(TabContainer.ChildCount - 1,
+                Loc.GetString("humanoid-profile-editor-cd-allergies-tab"));
+            // End CD - Allergies
 
             _recordsTab = new RecordEditorGui(UpdateProfileRecords);
             TabContainer.AddChild(_recordsTab);
@@ -908,6 +923,7 @@ namespace Content.Client.Lobby.UI
 
             // Begin CD - Character Records
             UpdateHeightControls();
+            UpdateCDAllergies();
             _recordsTab.Update(profile);
             // End CD - Character Records
 
@@ -1222,6 +1238,14 @@ namespace Content.Client.Lobby.UI
         }
         // End CD - Character Records
 
+        // CD Allergies Editor
+        private void UpdateAllergies(Dictionary<ReagentPrototype, FixedPoint2> allergies)
+        {
+            Profile = Profile?.WithCDAllergies(allergies.Select(allergy => (allergy.Key.ID, allergy.Value))
+                .ToDictionary());
+            SetDirty();
+        }
+        // End CD Allergies
         private void OnFlavorTextChange(string content)
         {
             if (Profile is null)
@@ -1585,6 +1609,26 @@ namespace Content.Client.Lobby.UI
             CDHeight.Text = Profile.Height.ToString(CultureInfo.InvariantCulture);
         }
         // End CD - Character Records
+
+        // CD Allergies
+        private void UpdateCDAllergies()
+        {
+            if (Profile == null)
+            {
+                return;
+            }
+
+            var allergies = new Dictionary<ReagentPrototype, FixedPoint2>();
+            foreach (var entry in (Dictionary<string, FixedPoint2>)Profile.CDAllergies)
+            {
+                if (!_prototypeManager.TryIndex(entry.Key, out ReagentPrototype? reagent))
+                    continue;
+                allergies.Add(reagent, entry.Value);
+            }
+
+            _allergiesTab.SetData(allergies);
+        }
+        // CD End
 
         private void UpdateSpawnPriorityControls()
         {
