@@ -33,6 +33,8 @@
     <Compile Remove="Migrations\Sqlite\20251220010349_profile.Designer.cs" />
     <Compile Remove="Migrations\Postgres\20251220010401_profile.cs" />
     <Compile Remove="Migrations\Postgres\20251220010401_profile.Designer.cs" />
+    <Compile Remove="Migrations\Postgres\20260326011136_CDAllergies.cs" />
+    <Compile Remove="Migrations\Postgres\20260326011136_CDAllergies.Designer.cs" />
   </ItemGroup>
 
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
