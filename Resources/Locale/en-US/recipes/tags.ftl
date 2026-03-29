@@ -109,6 +109,7 @@ construction-graph-tag-station-ai-core-electronics = station AI core electronics
 # tools
 construction-graph-tag-multitool = a multitool
 construction-graph-tag-health-analyzer = health analyzer
+construction-graph-tag-welder = welding tool
 
 # utils
 construction-graph-tag-air-alarm-electronics = air alarm electronics
@@ -152,3 +153,4 @@ construction-graph-tag-spationaut-hardsuit = spationaut hardsuit
 
 # clothing
 construction-graph-tag-backpack = backpack
+construction-graph-tag-welding-mask = welding mask
