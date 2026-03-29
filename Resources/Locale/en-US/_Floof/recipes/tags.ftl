@@ -4,7 +4,7 @@ construction-graph-tag-high-heel-boots = a pair of high heel boots
 
 #tools
 construction-graph-tag-plantclippers = plant clippers
-construction-graph-tag-welder
+construction-graph-tag-welder = welding tool
 
 #carpets
 construction-graph-tag-carpet-simple-black = carpet simple black
