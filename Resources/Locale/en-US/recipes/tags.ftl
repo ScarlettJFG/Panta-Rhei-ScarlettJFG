@@ -109,7 +109,6 @@ construction-graph-tag-station-ai-core-electronics = station AI core electronics
 # tools
 construction-graph-tag-multitool = a multitool
 construction-graph-tag-health-analyzer = health analyzer
-construction-graph-tag-welder = welding tool
 
 # utils
 construction-graph-tag-air-alarm-electronics = air alarm electronics
