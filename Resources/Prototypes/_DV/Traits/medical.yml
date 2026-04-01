@@ -117,6 +117,7 @@
   name: trait-small-name
   description: trait-small-desc
   category: Medical
+  conditions:
   - !type:IsSpeciesCondition
     invert: true
     species:
@@ -124,6 +125,7 @@
     - Rodentia
     - Resomi
     - Kitsune
+    - Oni
   functions:
   - !type:AddCompsEffect
     components:
