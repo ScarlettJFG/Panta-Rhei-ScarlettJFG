@@ -42,4 +42,6 @@
         Male: MaleSlime
         Female: FemaleSlime
         Unsexed: MaleSlime
+  - type: Puller
+    needsHands: false
 
