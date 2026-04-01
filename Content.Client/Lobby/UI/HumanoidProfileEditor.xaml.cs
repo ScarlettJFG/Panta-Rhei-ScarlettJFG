@@ -38,6 +38,7 @@ using Direction = Robust.Shared.Maths.Direction;
 // Begin CD - Character Records
 using System.Globalization;
 using Content.Client._CD.Records.UI;
+using Content.Client._Floof.Lobby.UI;
 using Content.Shared._CD.Records;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
@@ -1206,6 +1207,29 @@ namespace Content.Client.Lobby.UI
                 Profile = Profile?.WithLoadout(roleLoadout);
                 SetDirty();
                 ReloadPreview();
+            };
+
+            _loadoutWindow.OnRequestLoadoutMetadataEdit += (groupProto, loadoutProto) =>
+            {
+                if (!roleLoadout.SelectedLoadouts.TryGetValue(groupProto, out var group)
+                    || group.Find(it => it.Prototype == loadoutProto) is not { } loadout)
+                    return;
+
+                var dlg = new LoadoutMetadataEditorDialog(loadout, loadoutProto, groupProto);
+                dlg.OnSave += (newLoadout) =>
+                {
+                    // The role loadouts could have changed, we cant trust the old value
+                    if (!roleLoadout.SelectedLoadouts.TryGetValue(groupProto, out var newGroup))
+                        return;
+
+                    newGroup.RemoveAll(it => it.Prototype == loadoutProto);
+                    newGroup.Add(newLoadout);
+                    Profile = Profile?.WithLoadout(roleLoadout);
+                    _loadoutWindow.RefreshLoadouts(roleLoadout, session, collection);
+                    SetDirty();
+                    ReloadPreview();
+                };
+                dlg.OpenCentered();
             };
 
             JobOverride = jobProto;
