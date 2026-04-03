@@ -17,3 +17,6 @@ construction-graph-tag-carpet-simple-purple = carpet simple purple
 construction-graph-tag-carpet-simple-red = carpet simple red
 construction-graph-tag-carpet-simple-skyblue = carpet simple skyblue
 construction-graph-tag-carpet-simple-white = carpet simple white
+
+#masks
+construction-graph-tag-welding-mask = welding mask

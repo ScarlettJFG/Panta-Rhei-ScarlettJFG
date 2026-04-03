@@ -1,4 +1,7 @@
 ﻿using Content.Server.Chat.Systems;
+using Content.Server.NPC;
+using Content.Server.NPC.HTN.PrimitiveTasks;
+using Content.Server.NPC.HTN;
 using Content.Shared.Chat;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
@@ -12,7 +15,7 @@ using Content.Shared.Tag;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators.Specific;
+namespace Content.Server._Floof.NPC.Operators.Specific;
 
 public sealed partial class WeldbotWeldOperator : HTNOperator
 {
