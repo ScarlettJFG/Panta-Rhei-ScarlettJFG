@@ -1285,9 +1285,6 @@
   id: SiliconEmotes # Whitelisted and blacklisted in various EmotePrototypes to create a silicon emote group.
 
 - type: Tag
-  id: SiliconMob # Euphoria - Used by Weldbots
-
-- type: Tag
   id: Skewer # Food sequence key
 
 - type: Tag # sliced fruit, vegetables, pizza etc.
@@ -1506,11 +1503,6 @@
 - type: Tag
   id: WeaponShotgunKammerer # Storage whitelist: ShotGunCabinet
 
-- type: Tag
-  id: WeldbotFixableStructure # Euphoria - Used by Weldbot
-
-- type: Tag
-  id: WeldingMask # Storage whitelist: BaseClothingBeltEngineering
 
 - type: Tag
   id: WetFloorSign # Storage whitelist: ClothingBeltJanitor, JanitorialTrolley. ItemMapper: JanitorialTrolley

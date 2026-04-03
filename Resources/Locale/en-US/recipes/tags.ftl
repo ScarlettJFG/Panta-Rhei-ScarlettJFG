@@ -152,4 +152,3 @@ construction-graph-tag-spationaut-hardsuit = spationaut hardsuit
 
 # clothing
 construction-graph-tag-backpack = backpack
-construction-graph-tag-welding-mask = welding mask

@@ -1,6 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.NPC.Pathfinding;
+using Content.Server.NPC;
+using Content.Server.NPC.HTN.PrimitiveTasks;
 using Content.Shared.Damage.Components;
 using Content.Shared.Emag.Components;
 using Content.Shared.Interaction;
@@ -8,7 +10,7 @@ using Content.Shared.Silicons.Bots;
 using Content.Shared.Tag;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators.Specific;
+namespace Content.Server._Floof.NPC.Operators.Specific;
 
 public sealed partial class PickNearbyWeldableOperator : HTNOperator
 {
