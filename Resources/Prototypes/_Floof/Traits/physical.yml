@@ -227,11 +227,9 @@
   - !type:AddCompsEffect
     components:
     - type: PseudoItem
-      storedOffset: 0,17
+      storedOffset: 0,10
       shape:
-      - 0,0,1,4
-      - 0,2,3,4
-      - 4,0,5,4
+      - 0,0,10,10
 
 - type: trait
   id: Tiny
@@ -275,7 +273,8 @@
   - !type:ReplaceCompsEffect
     components:
     - type: PseudoItem # TODO: fix PseudoItem direct insertion bug - not created by this trait, but particularly noticeable when using it
-      size: Normal
+      storedOffset: 0,17
+      shape: Normal
     - type: Carriable
       freeHandsRequired: 1 #Default is 2, they are tiny enough to be carried in one hand
       pickupDuration: 2 # Default is 3, plus they will already be lighter. Get scooped.
