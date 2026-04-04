@@ -31,6 +31,8 @@ public sealed partial class WeldbotWeldOperator : HTNOperator
 
     public const string SiliconTag = "SiliconMob";
     public const string WeldotFixableStructureTag = "WeldbotFixableStructure";
+    public const string BurnDamage = "Burn";
+    public const string BruteDamage = "Brute";
 
     public const float EmaggedBurnDamage = 10;
     public const float SiliconRepairAmount = 30;
@@ -88,33 +90,36 @@ public sealed partial class WeldbotWeldOperator : HTNOperator
         if ((!canWeldSilicon && weldableIsSilicon) || (!canWeldStructure && weldableIsStructure))
             return HTNOperatorStatus.Failed;
 
-        // Euphoria - Old ported code for what to do if emagged, but I cannot get it working, and apparently no one emags these guys. I can remove if needed or leave in for future coders to tinker with. -ScarlettJFG
-       // if (botComp.IsEmagged)
-       // {
-            // if (!_prototypeManager.TryIndex<DamageGroupPrototype>("Burn", out var prototype) || weldableIsStructure)
-            // return HTNOperatorStatus.Failed;
+        // Euphoria - Not the most elegant solution I bet, but this reworks the old code to work on wizden current changes under Delta-V.
+        if (botComp.IsEmagged)
+        {
+             if (!_prototypeManager.TryIndex<DamageGroupPrototype>( BurnDamage, out var prototype) || weldableIsStructure)
+                return HTNOperatorStatus.Failed;
 
-            // _damageableSystem.TryChangeDamage(target, new DamageSpecifier(prototype, EmaggedBurnDamage), true, false, damage);
-       // }
-        // else
-       // {
-           // if (weldableIsSilicon)
-           // {
-               // if (!_prototypeManager.TryIndex<DamageGroupPrototype>("Brute", out var prototype))
-                   // return HTNOperatorStatus.Failed;
+             _damageableSystem.TryChangeDamage(target, new DamageSpecifier(prototype, EmaggedBurnDamage), true, false);
+        }
+        else
+        {
+            if (weldableIsSilicon)
+            {
+                if (!_prototypeManager.TryIndex<DamageGroupPrototype>(BruteDamage, out var prototype))
+                    return HTNOperatorStatus.Failed;
 
-               // _damageableSystem.TryChangeDamage(target, new DamageSpecifier(prototype, -SiliconRepairAmount), true, false, damage);
-           // }
-           // else if (weldableIsStructure)
-           // {
-                //If a structure explicitly has a tag to allow a Weldbot to fix it, trust that we can just do so no matter what the damage actually is.
-               // _damageableSystem.ChangeDamage(target, damage, -StructureRepairAmount);
-           // }
-           // else
-           // {
-               // return HTNOperatorStatus.Failed;
-           // }
-       // }
+                _damageableSystem.TryChangeDamage(target, new DamageSpecifier(prototype, -SiliconRepairAmount), true, false);
+            }
+            else if (weldableIsStructure)
+            {
+                if (!_prototypeManager.TryIndex<DamageGroupPrototype>(BruteDamage, out var prototype))
+
+                    return HTNOperatorStatus.Failed;
+
+                _damageableSystem.TryChangeDamage(target, new DamageSpecifier(prototype, -StructureRepairAmount));
+            }
+            else
+            {
+                return HTNOperatorStatus.Failed;
+            }
+        }
 
         _audio.PlayPvs(botComp.WeldSound, target);
 
