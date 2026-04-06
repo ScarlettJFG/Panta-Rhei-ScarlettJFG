@@ -328,7 +328,7 @@
   id: N14ChairOfficeErgonomic
   graph: N14Seat
   startNode: start
-  targetNode: N14ChairOfficeErgonomic
+  targetNode: N14ChairErgonomic
   category: construction-category-furniture
   description: ergonomic-office-chair-descrption
 #  icon:
