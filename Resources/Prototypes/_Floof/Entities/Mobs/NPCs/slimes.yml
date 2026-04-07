@@ -2,13 +2,22 @@
   name: geras
   description: A geras of a slime - the name is ironic, isn't it?
   id: MobSlimesGeras
-  parent: BaseMobAdultSlimes
+  parent: [BaseMobAdultSlimes, StripableInventoryBase]
   categories: [ HideSpawnMenu ]
   components:
   # they portable...
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 3
-    baseSprintSpeed: 5 # +.5 from normal movement speed
+  #- type: MovementSpeedModifier
+    #baseWalkSpeed: 3
+    #baseSprintSpeed: 5 # +.5 from normal movement speed
+  - type: Inventory
+    templateId: gerasinv
+  - type: Hands
+  - type: MultiHandedItem
+  - type: Body
+    prototype: Geras
+  - type: Stripping
+  - type: ComplexInteraction
+  - type: IdExaminable
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -16,7 +25,6 @@
   - type: NpcFactionMember
     factions:
     - NanoTrasen
-  - type: MultiHandedItem
   - type: Item
     size: Huge
   - type: Sprite

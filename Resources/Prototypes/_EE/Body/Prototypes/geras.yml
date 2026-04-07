@@ -1,0 +1,32 @@
+﻿- type: body
+  id: Geras
+  name: "geras"
+  root: torso
+  slots:
+    torso:
+      part: TorsoSlime
+      connections:
+      - right arm
+      - left arm
+      - legs
+      organs:
+        core: SentientSlimesCore
+        lungs: OrganSlimesLungs
+    right arm:
+      part: RightArmSlime
+      connections:
+      - right hand
+    left arm:
+      part: LeftArmSlime
+      connections:
+      - left hand
+    right hand:
+      part: RightHandSlime
+    left hand:
+      part: LeftHandSlime
+    legs:
+      part: LegsAnimal
+      connections:
+      - feet
+    feet:
+      part: FeetAnimal

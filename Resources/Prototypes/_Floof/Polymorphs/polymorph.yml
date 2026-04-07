@@ -3,8 +3,9 @@
   configuration:
     entity: MobSlimesGeras
     transferName: true
+    transferInventory: false
     transferHumanoidAppearance: false
-    inventory: Drop
+    inventory: drop
     transferDamage: true
     revertOnDeath: true
     revertOnCrit: true
