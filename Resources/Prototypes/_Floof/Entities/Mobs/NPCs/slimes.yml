@@ -8,12 +8,12 @@
   # they portable...
   - type: Body
     prototype: Geras
+    requiredLegs: 1
   - type: Inventory
     templateId: gerasinv
   - type: Hands
   - type: MultiHandedItem
   - type: Stripping
-  - type: Cuffable
   - type: ComplexInteraction
   - type: MobThresholds
     thresholds:
