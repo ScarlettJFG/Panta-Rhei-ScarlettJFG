@@ -2,22 +2,23 @@
   name: geras
   description: A geras of a slime - the name is ironic, isn't it?
   id: MobSlimesGeras
-  parent: [BaseMobAdultSlimes, StripableInventoryBase]
+  parent: [SimpleMobBase, StripableInventoryBase]
   categories: [ HideSpawnMenu ]
   components:
   # they portable...
-  #- type: MovementSpeedModifier
-    #baseWalkSpeed: 3
-    #baseSprintSpeed: 5 # +.5 from normal movement speed
+  - type: Body
+    prototype: Geras
+  - type: Vocal # Floof. This is 100% more of a bandaid fix until I learn more about how sounds work, but now Geras emotes will have sound.
+    sounds:
+      Male: MaleSlime
+      Female: FemaleSlime
+      Unsexed: MaleSlime
   - type: Inventory
     templateId: gerasinv
   - type: Hands
   - type: MultiHandedItem
-  - type: Body
-    prototype: Geras
   - type: Stripping
   - type: ComplexInteraction
-  - type: IdExaminable
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -31,15 +32,15 @@
     layers:
     - map: [ "colorMap" ]
       state: slime_geras
-    - map: [ "eyesMap" ]
-      state: slime_geras_eyes
-      shader: unshaded
+    #- map: [ "eyesMap" ] # Commenting out for now, want to change this sprite.
+      #state: slime_geras_eyes
+      #shader: unshaded
   - type: RandomSprite
     selected:
       colorMap:
         slime_geras: "#0000FF"
-      eyesMap:
-        slime_geras_eyes: "#0000FF"
+      #eyesMap:
+        #slime_geras_eyes: "#0000FF"
   - type: MeleeWeapon
     attackRate: 2
     damage:
@@ -57,4 +58,6 @@
         Unsexed: MaleSlime
   - type: Puller
     needsHands: false
-
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 5 # +.5 from normal movement speed
