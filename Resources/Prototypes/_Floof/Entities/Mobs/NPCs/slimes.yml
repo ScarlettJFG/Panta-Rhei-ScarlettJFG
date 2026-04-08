@@ -2,22 +2,18 @@
   name: geras
   description: A geras of a slime - the name is ironic, isn't it?
   id: MobSlimesGeras
-  parent: [SimpleMobBase, StripableInventoryBase]
+  parent: [BaseMobAdultSlimes, StripableInventoryBase]
   categories: [ HideSpawnMenu ]
   components:
   # they portable...
   - type: Body
     prototype: Geras
-  - type: Vocal # Floof. This is 100% more of a bandaid fix until I learn more about how sounds work, but now Geras emotes will have sound.
-    sounds:
-      Male: MaleSlime
-      Female: FemaleSlime
-      Unsexed: MaleSlime
   - type: Inventory
     templateId: gerasinv
   - type: Hands
   - type: MultiHandedItem
   - type: Stripping
+  - type: Cuffable
   - type: ComplexInteraction
   - type: MobThresholds
     thresholds:
