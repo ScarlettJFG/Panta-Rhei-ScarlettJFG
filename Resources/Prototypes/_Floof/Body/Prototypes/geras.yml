@@ -8,7 +8,6 @@
       connections:
       - right arm
       - left arm
-      - legs
       organs:
         core: SentientSlimesCore
         lungs: OrganSlimesLungs
@@ -24,9 +23,3 @@
       part: RightHandSlime
     left hand:
       part: LeftHandSlime
-    legs:
-      part: LegsAnimal
-      connections:
-      - feet
-    feet:
-      part: FeetAnimal

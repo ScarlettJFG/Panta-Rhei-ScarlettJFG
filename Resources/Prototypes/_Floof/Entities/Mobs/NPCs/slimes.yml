@@ -8,10 +8,12 @@
   # they portable...
   - type: Body
     prototype: Geras
-    requiredLegs: 1
   - type: Inventory
     templateId: gerasinv
   - type: Hands
+    whitelist:
+      tags:
+      - DoorBumpOpener
   - type: MultiHandedItem
   - type: Stripping
   - type: ComplexInteraction
