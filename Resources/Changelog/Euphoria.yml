@@ -1938,3 +1938,9 @@ Entries:
         damage if you want to have fun with them)
   id: 244
   time: '2026-04-09T09:02:16.0000000+00:00'
+- author: JaDiDo
+  changes:
+    - type: Add
+      message: Return of the small trait
+  id: 245
+  time: '2026-04-09T09:04:00.0000000+00:00'
