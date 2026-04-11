@@ -77,7 +77,7 @@
   - type: PhysicalComposition # DeltaV - Made flashlights recycleable
     materialComposition:
       Steel: 50 # Floofstation - infinite steel glitch
-      Plastic: 100
+      Plastic: 50 # Also this
 
 - type: entity
   name: seclite
