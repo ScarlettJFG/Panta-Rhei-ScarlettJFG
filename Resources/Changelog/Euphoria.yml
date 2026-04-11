@@ -1988,3 +1988,11 @@ Entries:
       message: Flame religion holy book
   id: 249
   time: '2026-04-11T02:58:13.0000000+00:00'
+- author: kivdon
+  changes:
+    - type: Tweak
+      message: >-
+        Adjusted HoP requirements to not require Command time, and instead
+        require Service time (overall, and Chef and Botany specifically too).
+  id: 250
+  time: '2026-04-11T10:07:32.0000000+00:00'
