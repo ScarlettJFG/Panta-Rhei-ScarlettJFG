@@ -2046,3 +2046,12 @@ Entries:
       message: Floof documents as part of locale
   id: 256
   time: '2026-04-13T05:07:09.0000000+00:00'
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        You can now change the custom examine of other entities you can interact
+        with. Changing it involves a do-after. You can't change the examine of
+        other players unless they turn on a new consent toggle.
+  id: 257
+  time: '2026-04-13T05:20:25.0000000+00:00'
