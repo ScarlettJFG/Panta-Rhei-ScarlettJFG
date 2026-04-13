@@ -1,4 +1,4 @@
-- type: entity # Euphoria - This entity readded to allow Geras to work again. 1:1 port.
+- type: entity # Euphoria - This entity readded to allow Geras to work again.
   name: geras
   description: A geras of a slime - the name is ironic, isn't it?
   id: MobSlimesGeras
@@ -21,12 +21,6 @@
   - type: NpcFactionMember
     factions:
     - NanoTrasen
-  #- type: Clumsy
-    #gunShootFailDamage:
-      #types: #literally just picked semi random valus. i tested this once and tweaked it.
-        #Blunt: 10
-        #Piercing: 5
-        #Heat: 5
   - type: Item
     size: Huge
   - type: Sprite
