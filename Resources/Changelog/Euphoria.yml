@@ -1904,3 +1904,103 @@ Entries:
       message: Added Allergies, fun! Actually no, as a medical main, this is pain...
   id: 240
   time: '2026-04-07T02:31:29.0000000+00:00'
+- author: UtriculariaCalycifida
+  changes:
+    - type: Add
+      message: >-
+        Consent toggle for aphrodisiacs. It's off by default, so remember to
+        turn it on if you want.
+  id: 241
+  time: '2026-04-07T23:31:17.0000000+00:00'
+- author: Raikyr0
+  changes:
+    - type: Tweak
+      message: >-
+        Changed Carp Sushi Rolls to no longer have carpotoxin, the food health
+        rating will be increasing.
+    - type: Tweak
+      message: Changed Sashimi recipe to use soy sauce instead of salt.
+  id: 242
+  time: '2026-04-07T23:33:04.0000000+00:00'
+- author: sprkl
+  changes:
+    - type: Tweak
+      message: Firebug's Friend cost changed from 2 to 3.
+    - type: Tweak
+      message: Firebug Festival cost changed from 10 to 15.
+  id: 243
+  time: '2026-04-07T23:34:19.0000000+00:00'
+- author: trashalice
+  changes:
+    - type: Tweak
+      message: >-
+        Changed sex toy whips to not do insane stamina damage. (they still do
+        damage if you want to have fun with them)
+  id: 244
+  time: '2026-04-09T09:02:16.0000000+00:00'
+- author: JaDiDo
+  changes:
+    - type: Add
+      message: Return of the small trait
+  id: 245
+  time: '2026-04-09T09:04:00.0000000+00:00'
+- author: Dunrab
+  changes:
+    - type: Add
+      message: >-
+        The Ghostbar is now available for round removed players or spectating
+        players to use with the character they chose for that round.
+  id: 246
+  time: '2026-04-10T03:50:51.0000000+00:00'
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: >-
+        You can now edit your character's scent mid-game. Right-click menu >
+        interact > edit scents. Admin ghosts can edit scents on all entities.
+    - type: Fix
+      message: >-
+        The "interact" category no longer has smelling-related verbs above the
+        basic ones.
+  id: 247
+  time: '2026-04-10T09:26:40.0000000+00:00'
+- author: Dunrab
+  changes:
+    - type: Add
+      message: >-
+        Engineering can now choose to bring engineering goggles or different
+        eyewear.
+    - type: Add
+      message: A few more trinkets are now aviaible.
+    - type: Fix
+      message: More roles should have access to full loadout options.
+  id: 248
+  time: '2026-04-11T02:38:10.0000000+00:00'
+- author: faefyr
+  changes:
+    - type: Add
+      message: 8 new chaplain clothing - Flame Religion
+    - type: Add
+      message: 1 new winter coat - Flame Religion
+    - type: Add
+      message: Flame religion Altar
+    - type: Add
+      message: Flame religion holy book
+  id: 249
+  time: '2026-04-11T02:58:13.0000000+00:00'
+- author: kivdon
+  changes:
+    - type: Tweak
+      message: >-
+        Adjusted HoP requirements to not require Command time, and instead
+        require Service time (overall, and Chef and Botany specifically too).
+  id: 250
+  time: '2026-04-11T10:07:32.0000000+00:00'
+- author: Mnemotechnician
+  changes:
+    - type: Add
+      message: Merged upstream changes up to 2026-04-06. See the PR for more details.
+    - type: Fix
+      message: Probably fixed the empty footprint bug.
+  id: 251
+  time: '2026-04-13T00:12:00.0000000+00:00'
