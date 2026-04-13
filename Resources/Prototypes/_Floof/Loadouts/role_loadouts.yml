@@ -16,6 +16,7 @@
   - GroupTankHarness
   - StationEngineerHead
   - StationEngineerNeck # DeltaV
+  - FloofEngineeringGlasses # Floofstation glasses
   - SeniorEngineerJumpsuit # floofstation
   - StationEngineerGloves # floostation
   - StationEngineerBelts # floofstation
@@ -120,7 +121,6 @@
   - StationEngineerGloves
   - SecurityShoes
   - SecurityPDA
-  - StationEngineerBelts
   - RoboticistGlasses
   - SurvivalSecurity
   - Smokeables
