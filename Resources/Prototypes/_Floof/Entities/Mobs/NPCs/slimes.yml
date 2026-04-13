@@ -11,9 +11,6 @@
   - type: Inventory
     templateId: gerasinv
   - type: Hands
-    whitelist:
-      tags:
-      - DoorBumpOpener
   - type: MultiHandedItem
   - type: Stripping
   - type: ComplexInteraction
@@ -24,21 +21,31 @@
   - type: NpcFactionMember
     factions:
     - NanoTrasen
+  #- type: Clumsy
+    #gunShootFailDamage:
+      #types: #literally just picked semi random valus. i tested this once and tweaked it.
+        #Blunt: 10
+        #Piercing: 5
+        #Heat: 5
   - type: Item
     size: Huge
   - type: Sprite
     layers:
     - map: [ "colorMap" ]
       state: slime_geras
-    #- map: [ "eyesMap" ] # Commenting out for now, want to change this sprite.
-      #state: slime_geras_eyes
-      #shader: unshaded
+    - map: [ "eyesMap" ] # Coming back to this sprite soon - ScarlettJFG
+      state: slime_geras_eyes
+      shader: unshaded
   - type: RandomSprite
     selected:
       colorMap:
         slime_geras: "#0000FF"
-      #eyesMap:
-        #slime_geras_eyes: "#0000FF"
+      eyesMap:
+        slime_geras_eyes: "#0000FF"
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
   - type: MeleeWeapon
     attackRate: 2
     damage:

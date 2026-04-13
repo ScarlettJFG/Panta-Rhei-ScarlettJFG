@@ -8,9 +8,6 @@ using Content.Server.Body.Components;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Humanoid;
 using Content.Shared.Sprite;
-using Content.Server.Access.Systems;
-using Content.Shared.Access.Components;
-using Content.Shared.Access.Systems;
 using Content.Shared.Polymorph;
 
 namespace Content.Server._Floof.Geras;
@@ -21,8 +18,6 @@ public sealed class GerasSystem : EntitySystem
     [Dependency] private readonly PolymorphSystem _polymorphSystem = default!;
     [Dependency] private readonly ActionsSystem _actionsSystem = default!;
     [Dependency] private readonly PopupSystem _popupSystem = default!;
-    [Dependency] private readonly AccessReaderSystem _reader = default!;
-    [Dependency] private readonly AccessSystem _access = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -43,19 +38,6 @@ public sealed class GerasSystem : EntitySystem
         _actionsSystem.AddAction(uid, ref component.GerasActionEntity, component.GerasAction);
     }
 
-    // Accesses transferring?
-    private void OnPolymorphed(Entity<GerasComponent> oldEntity, ref PolymorphedEvent args)
-    {
-        var newEntity = args.NewEntity;
-
-        if (HasComp<GerasComponent>(oldEntity))
-            return;
-
-        var accessItems = _reader.FindPotentialAccessItems(oldEntity);
-        var accesses = _reader.FindAccessTags(oldEntity, accessItems);
-        EnsureComp<AccessComponent>(newEntity);
-        _access.TrySetTags(newEntity, accesses);
-    }
 
     private void OnMorphIntoGeras(EntityUid uid, GerasComponent component, MorphIntoGeras args)
     {
@@ -85,6 +67,8 @@ public sealed class GerasSystem : EntitySystem
                 Dirty(ent.Value, randomSprite);
             }
         } // end imp
+
+
 
         if (!ent.HasValue)
             return;
