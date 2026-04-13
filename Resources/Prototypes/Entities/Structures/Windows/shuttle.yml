@@ -47,6 +47,8 @@
   - type: Appearance
   - type: Tag
     tags:
+    - ForceFixRotations
+    - Window
     - WeldbotFixableStructure # Euphoria - Welbot fixable
   - type: DamageVisuals
     thresholds: [5, 10, 20]

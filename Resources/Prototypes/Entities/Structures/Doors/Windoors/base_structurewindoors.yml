@@ -64,6 +64,8 @@
   - type: AnimationPlayer
   - type: Tag
     tags:
+    - ForceFixRotations
+    - Window
     - WeldbotFixableStructure # Euphoria - Welbot fixable
   - type: ApcPowerReceiver
   - type: ExtensionCableReceiver
