@@ -3,7 +3,6 @@
   configuration:
     entity: MobSlimesGeras
     transferName: true
-    transferInventory: false
     transferHumanoidAppearance: false
     inventory: drop
     transferDamage: true
