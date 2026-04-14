@@ -2055,3 +2055,51 @@ Entries:
         other players unless they turn on a new consent toggle.
   id: 257
   time: '2026-04-13T05:20:25.0000000+00:00'
+- author: ScarlettJFG
+  changes:
+    - type: Add
+      message: Added Weldbots, now requiring Experimental Welders.
+  id: 258
+  time: '2026-04-13T08:41:49.0000000+00:00'
+- author: Compilatron144
+  changes:
+    - type: Add
+      message: Added cowprint bikini and thigh highs. Moo!
+  id: 259
+  time: '2026-04-13T08:49:08.0000000+00:00'
+- author: Raikyr0
+  changes:
+    - type: Fix
+      message: Added Sericulture back to Arachne. They can now spin silk again.
+    - type: Fix
+      message: Added Spider back to Arachne. They can now place floor webs again.
+  id: 260
+  time: '2026-04-13T08:55:06.0000000+00:00'
+- author: Dunrab
+  changes:
+    - type: Add
+      message: The curator help button is now available in the lobby.
+  id: 261
+  time: '2026-04-13T22:23:03.0000000+00:00'
+- author: ScarlettJFG
+  changes:
+    - type: Add
+      message: Geras can pick things up! HANDS (Or tendrils really...)
+    - type: Add
+      message: Geras can drag things! Without the use of a hand slot!
+    - type: Add
+      message: Geras can have things pulled out of their tendrils and "ID" slot.
+    - type: Tweak
+      message: >-
+        Geras also get an ID slot. It does show on their face/hands, but this
+        makes sense.
+    - type: Fix
+      message: Slimes get hurt by water *properly*
+  id: 262
+  time: '2026-04-13T22:35:23.0000000+00:00'
+- author: SyaoranFox
+  changes:
+    - type: Fix
+      message: Respawn button actually respawning you.
+  id: 263
+  time: '2026-04-14T05:43:22.0000000+00:00'
