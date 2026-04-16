@@ -2198,3 +2198,11 @@ Entries:
         periods of calm.
   id: 274
   time: '2026-04-16T07:34:08.0000000+00:00'
+- author: sprkl
+  changes:
+    - type: Add
+      message: >-
+        The research server can potentially start corrupting at high glimmer
+        levels.
+  id: 275
+  time: '2026-04-16T07:35:17.0000000+00:00'
