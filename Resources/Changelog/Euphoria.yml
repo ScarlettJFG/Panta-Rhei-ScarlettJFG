@@ -2214,3 +2214,9 @@ Entries:
         captain's loadout and locker.
   id: 276
   time: '2026-04-16T07:36:06.0000000+00:00'
+- author: Eagle0600
+  changes:
+    - type: Add
+      message: Medical pouches for paramedics and corpsman to keep their chems in.
+  id: 277
+  time: '2026-04-16T07:38:49.0000000+00:00'
