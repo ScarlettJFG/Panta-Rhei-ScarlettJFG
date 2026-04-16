@@ -2206,3 +2206,11 @@ Entries:
         levels.
   id: 275
   time: '2026-04-16T07:35:17.0000000+00:00'
+- author: Rosycup
+  changes:
+    - type: Add
+      message: >-
+        Ported an armored trenchcoat for the captain. Obtained through the
+        captain's loadout and locker.
+  id: 276
+  time: '2026-04-16T07:36:06.0000000+00:00'
