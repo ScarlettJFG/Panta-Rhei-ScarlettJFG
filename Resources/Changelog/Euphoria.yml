@@ -2228,3 +2228,9 @@ Entries:
         Euphoria sector again.
   id: 278
   time: '2026-04-17T14:43:27.0000000+00:00'
+- author: Raikyr0
+  changes:
+    - type: Tweak
+      message: Increased Devil Spawn Chance
+  id: 279
+  time: '2026-04-18T01:08:56.0000000+00:00'
