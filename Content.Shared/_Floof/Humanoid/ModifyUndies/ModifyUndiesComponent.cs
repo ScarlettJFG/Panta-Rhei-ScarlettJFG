@@ -1,11 +1,8 @@
 using Content.Shared.Humanoid;
 
-namespace Content.Server._Floof.Humanoid.ModifyUndies;
+namespace Content.Shared._Floof.Humanoid.ModifyUndies;
 
 
-/// <summary>
-/// This is used for...
-/// </summary>
 [RegisterComponent]
 public sealed partial class ModifyUndiesComponent : Component
 {
@@ -13,10 +10,11 @@ public sealed partial class ModifyUndiesComponent : Component
     ///     The bodypart target enums for the undies.
     /// </summary>
     public List<HumanoidVisualLayers> BodyPartTargets =
-    [
-        HumanoidVisualLayers.UndergarmentBottom,
-        HumanoidVisualLayers.UndergarmentTop
-    ];
+        new()
+        {
+            HumanoidVisualLayers.UndergarmentBottom,
+            HumanoidVisualLayers.UndergarmentTop
+        };
 }
 
 
