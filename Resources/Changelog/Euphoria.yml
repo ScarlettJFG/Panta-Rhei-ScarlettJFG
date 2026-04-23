@@ -2320,3 +2320,11 @@ Entries:
       message: Fixed arachne age limit
   id: 289
   time: '2026-04-22T15:18:29.0000000+00:00'
+- author: Raikyr0
+  changes:
+    - type: Add
+      message: >-
+        Added Medical Records Circuit to CMO locker, and some others to other
+        heads.
+  id: 290
+  time: '2026-04-23T10:07:25.0000000+00:00'
