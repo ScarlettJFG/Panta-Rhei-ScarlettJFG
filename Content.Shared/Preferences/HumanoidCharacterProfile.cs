@@ -16,9 +16,10 @@ using Robust.Shared.Random;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 using Content.Shared._CD.Records; // CD - Character Records
-using Content.Shared.FixedPoint; // CD - Allergies
+using Content.Shared._CD.Body; // CD - Allergies
 using Content.Shared._DV.Traits; // DeltaV - Traits rework
 using Content.Shared._DV.Species; // DeltaV - Species hiding
+using Content.Shared.FixedPoint;
 
 namespace Content.Shared.Preferences
 {
@@ -146,7 +147,7 @@ namespace Content.Shared.Preferences
         public PlayerProvidedCharacterRecords? CDCharacterRecords;
 
         [DataField("cosmaticDriftAllergies")]
-        public Dictionary<string, FixedPoint2> CDAllergies = new();
+        public Dictionary<string, AllergyData> CDAllergies = new(); //Euph Allergy Update
         // End CD - Character records
 
         public HumanoidCharacterProfile(
@@ -167,7 +168,7 @@ namespace Content.Shared.Preferences
             // Begin CD - Character Records
             float height,
             PlayerProvidedCharacterRecords? cdCharacterRecords,
-            Dictionary<string, FixedPoint2> cdAllergies
+            Dictionary<string, AllergyData> cdAllergies //Euph Allergy Update
             // End CD - Character Records
         )
         {
@@ -372,7 +373,7 @@ namespace Content.Shared.Preferences
             return new HumanoidCharacterProfile(this) { CDCharacterRecords = records };
         }
 
-        public HumanoidCharacterProfile WithCDAllergies(Dictionary<string, FixedPoint2> allergies)
+        public HumanoidCharacterProfile WithCDAllergies(Dictionary<string, AllergyData> allergies) //Euph Allergy Update
         {
             return new HumanoidCharacterProfile(this) { CDAllergies = allergies };
         }

@@ -25,7 +25,6 @@ public static class CDModel
         public Profile Profile { get; set; } = null!;
 
         public float Height { get; set; } = 1f;
-
         [Column("character_records", TypeName = "jsonb")]
         public JsonDocument? CharacterRecords { get; set; }
 
@@ -49,6 +48,8 @@ public static class CDModel
 
         // in 100ths (FixedPoint2)
         public int Intensity { get; set; } = 100;
+
+        public string ReactionReagent { get; set; } = "Histamine"; //Euph Allergy Update
 
         public int CDProfileId { get; set; }
 

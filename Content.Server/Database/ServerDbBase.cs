@@ -26,9 +26,11 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Content.Server._CD.Records; // CD - Character Records
 using Content.Shared._CD.Records; // CD - Character Records
-using Content.Shared.FixedPoint; // CD - Allergies
+using Content.Shared._CD.Body; // CD - Allergies
 using Content.Shared._DV.Tips; // DV - Tips
 using Content.Shared._DV.Traits; // DV - Traits
+using Content.Shared.Chemistry.Reagent; //Euph Allergy Update
+using Content.Shared.FixedPoint; //Euph Allergy Update
 
 namespace Content.Server.Database
 {
@@ -260,7 +262,7 @@ namespace Content.Server.Database
 
             var cdAllergies = profile.CDProfile?.CharacterAllergies != null
                 ? profile.CDProfile.CharacterAllergies
-                    .Select(allergy => (allergy.Allergen, FixedPoint2.FromCents(allergy.Intensity)))
+                    .Select(allergy => (allergy.Allergen, new AllergyData{Intensity = FixedPoint2.FromCents(allergy.Intensity), ReactionReagent = new ProtoId<ReagentPrototype>(allergy.ReactionReagent)})) //Euph Allergy Update
                     .ToDictionary()
                 : new();
             // End CD - Character Records
@@ -385,7 +387,8 @@ namespace Content.Server.Database
                 new CDModel.CharacterAllergy
                 {
                     Allergen = entry.Key,
-                    Intensity = entry.Value.Value,
+                    Intensity = entry.Value.Intensity.Value, //Euph Allergy Update
+                    ReactionReagent = entry.Value.ReactionReagent //Euph Allergy Update
                 }));
 
             // End CD - Character Records

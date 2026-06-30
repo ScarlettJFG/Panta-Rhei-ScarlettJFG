@@ -42,7 +42,7 @@ using Content.Client._CD.Records.UI;
 using Content.Client._Floof.Lobby.UI;
 using Content.Shared._CD.Records;
 using Content.Shared.Chemistry.Reagent;
-using Content.Shared.FixedPoint;
+using Content.Shared._CD.Body; //Euph Allergy Update
 // End CD - Character Records
 using Content.Shared._DV.Traits; // DV - Traits
 
@@ -1239,7 +1239,7 @@ namespace Content.Client.Lobby.UI
         }
 
         // CD: Allergies editor
-        private void UpdateAllergies(Dictionary<ReagentPrototype, FixedPoint2> allergies)
+        private void UpdateAllergies(Dictionary<ReagentPrototype,AllergyData> allergies) //Euph Allergy Update
         {
             Profile = Profile?.WithCDAllergies(allergies.Select(allergy => (allergy.Key.ID, allergy.Value))
                 .ToDictionary());
@@ -1618,8 +1618,8 @@ namespace Content.Client.Lobby.UI
                 return;
             }
 
-            var allergies = new Dictionary<ReagentPrototype, FixedPoint2>();
-            foreach (var entry in (Dictionary<string, FixedPoint2>) Profile.CDAllergies)
+            var allergies = new Dictionary<ReagentPrototype, AllergyData>(); //Euph Allergy Update
+            foreach (var entry in (Dictionary<string, AllergyData>) Profile.CDAllergies) //Euph Allergy Update
             {
                 if (!_prototypeManager.TryIndex(entry.Key, out ReagentPrototype? reagent))
                     continue;
