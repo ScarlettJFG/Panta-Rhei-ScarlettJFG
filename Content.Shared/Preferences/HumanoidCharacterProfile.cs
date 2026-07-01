@@ -375,7 +375,7 @@ namespace Content.Shared.Preferences
 
         public HumanoidCharacterProfile WithCDAllergies(Dictionary<string, AllergyData> allergies) //Euph Allergy Update
         {
-            return new HumanoidCharacterProfile(this) { CDAllergies = allergies };
+            return new HumanoidCharacterProfile(this) { CDAllergies = allergies.ToDictionary(pair => pair.Key, pair => new AllergyData { Intensity =  pair.Value.Intensity, ReactionReagent =  pair.Value.ReactionReagent }) }; // Euph Allergy Update
         }
         // End CD - Character Records
 
