@@ -372,7 +372,7 @@ public sealed class MagicMirrorSystem : SharedMagicMirrorSystem
         if (string.IsNullOrEmpty(marking))
             return;
 
-        _humanoid.AddMarking(component.Target.Value, marking, Color.Black);
+        _humanoid.AddMarking(component.Target.Value, marking, false, Color.Black); //Starlight, glowing
 
         UpdateInterface(uid, component.Target.Value, component);
 

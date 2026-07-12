@@ -340,6 +340,19 @@ namespace Content.Client.Lobby.UI
                 ReloadPreview();
             };
 
+            //Starlight Start
+            HairStylePicker.OnGlowingChanged += newColor =>
+            {
+                if (Profile is null)
+                    return;
+                Profile = Profile.WithCharacterAppearance(
+                    Profile.Appearance.WithHairGlowing(newColor.marking.IsGlowing));
+                Logger.Info(newColor.marking.IsGlowing.ToString());
+                UpdateCMarkingsHair();
+                ReloadPreview();
+            };
+            //Starlight End
+
             FacialHairPicker.OnMarkingSelect += newStyle =>
             {
                 if (Profile is null)
@@ -358,6 +371,18 @@ namespace Content.Client.Lobby.UI
                 UpdateCMarkingsFacialHair();
                 ReloadPreview();
             };
+
+            //Starlight Start
+            FacialHairPicker.OnGlowingChanged += newColor =>
+            {
+                if (Profile is null)
+                    return;
+                Profile = Profile.WithCharacterAppearance(
+                    Profile.Appearance.WithFacialHairGlowing(newColor.marking.IsGlowing));
+                UpdateCMarkingsFacialHair();
+                ReloadPreview();
+            };
+            //Starlight End
 
             HairStylePicker.OnSlotRemove += _ =>
             {
@@ -451,6 +476,18 @@ namespace Content.Client.Lobby.UI
                 Markings.CurrentEyeColor = Profile.Appearance.EyeColor;
                 ReloadProfilePreview();
             };
+
+            //Starlight Start
+            EyeColorPicker.OnGlowingChanged += newColor =>
+            {
+                if (Profile is null)
+                    return;
+                Profile = Profile.WithCharacterAppearance(
+                    Profile.Appearance.WithEyeGlowing(newColor));
+                Markings.CurrentEyeColor = Profile.Appearance.EyeColor;
+                ReloadProfilePreview();
+            };
+            //Starlight End
 
             #endregion Eyes
 
@@ -1648,11 +1685,11 @@ namespace Content.Client.Lobby.UI
             }
             var hairMarking = Profile.Appearance.HairStyleId == HairStyles.DefaultHairStyle
                 ? new List<Marking>()
-                : new() { new(Profile.Appearance.HairStyleId, new List<Color>() { Profile.Appearance.HairColor }) };
+                : new() { new(Profile.Appearance.HairStyleId, new List<Color>() { Profile.Appearance.HairColor }, Profile.Appearance.HairGlowing) }; //Starlight glowing
 
             var facialHairMarking = Profile.Appearance.FacialHairStyleId == HairStyles.DefaultFacialHairStyle
                 ? new List<Marking>()
-                : new() { new(Profile.Appearance.FacialHairStyleId, new List<Color>() { Profile.Appearance.FacialHairColor }) };
+                : new() { new(Profile.Appearance.FacialHairStyleId, new List<Color>() { Profile.Appearance.FacialHairColor }, Profile.Appearance.FacialHairGlowing) }; //Starlight glowing
 
             HairStylePicker.UpdateData(
                 hairMarking,
@@ -1691,7 +1728,7 @@ namespace Content.Client.Lobby.UI
             }
             if (hairColor != null)
             {
-                Markings.HairMarking = new (Profile.Appearance.HairStyleId, new List<Color>() { hairColor.Value });
+                Markings.HairMarking = new (Profile.Appearance.HairStyleId, new List<Color>() { hairColor.Value }, Profile.Appearance.HairGlowing); //Starlight glowing
             }
             else
             {
@@ -1725,7 +1762,7 @@ namespace Content.Client.Lobby.UI
             }
             if (facialHairColor != null)
             {
-                Markings.FacialHairMarking = new (Profile.Appearance.FacialHairStyleId, new List<Color>() { facialHairColor.Value });
+                Markings.FacialHairMarking = new (Profile.Appearance.FacialHairStyleId, new List<Color>() { facialHairColor.Value }, Profile.Appearance.FacialHairGlowing); //Starlight glowing
             }
             else
             {
@@ -1741,7 +1778,7 @@ namespace Content.Client.Lobby.UI
             }
 
             Markings.CurrentEyeColor = Profile.Appearance.EyeColor;
-            EyeColorPicker.SetData(Profile.Appearance.EyeColor);
+            EyeColorPicker.SetData(Profile.Appearance.EyeColor, Profile.Appearance.EyeGlowing); //Starlight glowing
         }
 
         private void UpdateSaveButton()

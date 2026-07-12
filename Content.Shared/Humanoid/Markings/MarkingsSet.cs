@@ -267,7 +267,7 @@ public sealed partial class MarkingSet
                         for (var j = list[i].MarkingColors.Count; j < marking.Sprites.Count; j++)
                             colors.Add(substitute);
                     }
-                    list[i] = new(marking.ID, colors);
+                    list[i] = new(marking.ID, colors, false); //Euphoria, Needed for SL Glowing to work
                     // Floofstation section end
                 }
             }
@@ -309,7 +309,7 @@ public sealed partial class MarkingSet
                             eyeColor,
                             this
                         );
-                    var marking = new Marking(points.DefaultMarkings[index], colors);
+                    var marking = new Marking(points.DefaultMarkings[index], colors, false); //Starlight
 
                     AddBack(category, marking);
                 }

@@ -62,6 +62,17 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         var sprite = entity.Comp2;
 
         sprite[_sprite.LayerMapReserve((entity.Owner, sprite), HumanoidVisualLayers.Eyes)].Color = humanoidAppearance.EyeColor;
+        //Starlight Start
+        if (humanoidAppearance.EyeGlowing)
+        {
+            sprite.LayerSetShader(HumanoidVisualLayers.Eyes, "unshaded");
+        }
+        else
+            return;
+        {
+            sprite.LayerSetShader(HumanoidVisualLayers.Eyes, "");
+        }
+        //Starlight end
     }
 
     private static bool IsHidden(HumanoidAppearanceComponent humanoid, HumanoidVisualLayers layer)
@@ -187,13 +198,13 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             ? profile.Appearance.SkinColor.WithAlpha(hairAlpha)
             : profile.Appearance.HairColor;
         var hair = new Marking(profile.Appearance.HairStyleId,
-            new[] { hairColor });
+            new[] { hairColor }, profile.Appearance.HairGlowing); //Starlight
 
         var facialHairColor = _markingManager.MustMatchSkin(profile.Species, HumanoidVisualLayers.FacialHair, out var facialHairAlpha, _prototypeManager)
             ? profile.Appearance.SkinColor.WithAlpha(facialHairAlpha)
             : profile.Appearance.FacialHairColor;
         var facialHair = new Marking(profile.Appearance.FacialHairStyleId,
-            new[] { facialHairColor });
+            new[] { facialHairColor }, profile.Appearance.FacialHairGlowing); //Starlight
 
         if (_markingManager.CanBeApplied(profile.Species, profile.Sex, hair, _prototypeManager))
         {
@@ -213,7 +224,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
                 profile.Appearance.EyeColor,
                 markings
             );
-            markings.AddBack(prototype.MarkingCategory, new Marking(marking.MarkingId, markingColors));
+            markings.AddBack(prototype.MarkingCategory, new Marking(marking.MarkingId, markingColors, marking.IsGlowing)); //Starlight, glowing
         }
 
         markings.EnsureSpecies(profile.Species, profile.Appearance.SkinColor, _markingManager, _prototypeManager);
@@ -235,6 +246,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         humanoid.Species = profile.Species;
         humanoid.SkinColor = profile.Appearance.SkinColor;
         humanoid.EyeColor = profile.Appearance.EyeColor;
+        humanoid.EyeGlowing = profile.Appearance.EyeGlowing; //Starlight
         humanoid.Height = profile.Height; // CD - Character Records
 
         UpdateSprite((uid, humanoid, Comp<SpriteComponent>(uid)));
@@ -261,7 +273,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             {
                 if (_markingManager.TryGetMarking(marking, out var markingPrototype))
                 {
-                    ApplyMarking(markingPrototype, marking.MarkingColors, marking.Visible, entity);
+                    ApplyMarking(markingPrototype, marking.MarkingColors, marking.IsGlowing, marking.Visible, entity); //Starlight, glowing
                     if (markingPrototype.BodyPart == HumanoidVisualLayers.UndergarmentTop)
                         applyUndergarmentTop = false;
                     else if (markingPrototype.BodyPart == HumanoidVisualLayers.UndergarmentBottom)
@@ -331,28 +343,29 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
 
         if (undergarmentTop && humanoid.UndergarmentTop != null)
         {
-            var marking = new Marking(humanoid.UndergarmentTop, new List<Color> { new Color() });
+            var marking = new Marking(humanoid.UndergarmentTop, new List<Color> { new Color() }, false); //Starlight, glowing
             if (_markingManager.TryGetMarking(marking, out var prototype))
             {
                 // Markings are added to ClientOldMarkings because otherwise it causes issues when toggling the feature on/off.
                 humanoid.ClientOldMarkings.Markings.Add(MarkingCategories.UndergarmentTop, new List<Marking> { marking });
-                ApplyMarking(prototype, null, true, entity);
+                ApplyMarking(prototype, null, false, true, entity); //Starlight, glowing
             }
         }
 
         if (undergarmentBottom && humanoid.UndergarmentBottom != null)
         {
-            var marking = new Marking(humanoid.UndergarmentBottom, new List<Color> { new Color() });
+            var marking = new Marking(humanoid.UndergarmentBottom, new List<Color> { new Color() }, false); //Starlight, glowing
             if (_markingManager.TryGetMarking(marking, out var prototype))
             {
                 humanoid.ClientOldMarkings.Markings.Add(MarkingCategories.UndergarmentBottom, new List<Marking> { marking });
-                ApplyMarking(prototype, null, true, entity);
+                ApplyMarking(prototype, null, false, true, entity); //Starlight, glowing
             }
         }
     }
 
     private void ApplyMarking(MarkingPrototype markingPrototype,
         IReadOnlyList<Color>? colors,
+        bool isGlowing, //Starlight
         bool visible,
         Entity<HumanoidAppearanceComponent, SpriteComponent> entity)
     {
@@ -455,6 +468,12 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
                 layerId,
                 colorDict.TryGetValue(rsi.RsiState, out var color) ? color : Color.White);
 
+            //Starlight start
+            if (isGlowing)
+            {
+                sprite.LayerSetShader(layerId, "unshaded");
+            }
+
             if (humanoid.MarkingsDisplacement.TryGetValue(markingPrototype.BodyPart, out var displacementData) && markingPrototype.CanBeDisplaced)
                 _displacement.TryAddDisplacement(displacementData, (entity.Owner, sprite), targetLayer + j + 1, layerId, out _);
         }
@@ -511,7 +530,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             foreach (var marking in markingList)
             {
                 if (_markingManager.TryGetMarking(marking, out var markingPrototype) && markingPrototype.BodyPart == layer)
-                    ApplyMarking(markingPrototype, marking.MarkingColors, marking.Visible, (ent, ent.Comp, sprite));
+                    ApplyMarking(markingPrototype, marking.MarkingColors, marking.IsGlowing, marking.Visible, (ent, ent.Comp, sprite));//Starlight, glowing
             }
         }
     }

@@ -74,7 +74,7 @@ public partial class SharedBodySystem
         {
             var category = MarkingCategoriesConversion.FromHumanoidVisualLayers(layer);
             if (bodyAppearance.MarkingSet.Markings.TryGetValue(category, out var markingList))
-                markingsByLayer[layer] = markingList.Select(m => new Marking(m.MarkingId, m.MarkingColors.ToList())).ToList();
+                markingsByLayer[layer] = markingList.Select(m => new Marking(m.MarkingId, m.MarkingColors.ToList(), false)).ToList(); //Euphoria, Needed for SL Glowing to work
         }
 
         component.Markings = markingsByLayer;
@@ -119,7 +119,7 @@ public partial class SharedBodySystem
                     bodyAppearance.MarkingSet
                 );
 
-            var marking = new Marking(markingId, markingColors);
+            var marking = new Marking(markingId, markingColors, false); //Euphoria, Needed for SL Glowing to work
 
             _humanoidAppearance.SetLayerVisibility((uid, bodyAppearance), targetLayer, visible: true);
             _humanoidAppearance.AddMarking(uid, markingId, markingColors, true, true, bodyAppearance);

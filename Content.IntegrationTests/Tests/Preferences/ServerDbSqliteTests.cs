@@ -48,11 +48,14 @@ namespace Content.IntegrationTests.Tests.Preferences
                 Appearance = new(
                     "Afro",
                     Color.Aqua,
+                    false, //Starlight
                     "Shaved",
                     Color.Aquamarine,
+                    false, //Starlight
                     Color.Azure,
+                    false, //Starlight
                     Color.Beige,
-                    new ())
+                    new())
             };
         }
 
